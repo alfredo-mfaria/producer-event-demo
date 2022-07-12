@@ -1,0 +1,13 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        metrics-out-0:
+          destination: metric-items
+          contentType: plain/text
+  kafka:
+    bootstrap-servers: http://localhost:9092
+    client-id: metric-producer
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer

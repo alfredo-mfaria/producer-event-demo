@@ -1,0 +1,18 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        process-out-0:
+          destination: metric-items
+          contentType: plain/text
+  kafka:
+    bootstrap-servers: https://my-learning.servicebus.windows.net:9093 # This was deleted already, use as REF
+    client-id: metric-producer
+    properties:
+      # https://docs.confluent.io/platform/current/kafka/authentication_sasl/authentication_sasl_plain.html
+      sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://my-learning.servicebus.windows.net/;SharedAccessKeyName=admin;SharedAccessKey=iji4tsb9vAgcOWXMI7dqytLTxGKtb+U9QqICpGSZ1j4="; # This was deleted already, use as REF
+      sasl.mechanism: PLAIN
+      security.protocol: SASL_SSL
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
